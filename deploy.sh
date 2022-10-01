@@ -2,7 +2,7 @@ set -ex
 
 # Set constants
 REGION="asia-northeast2"
-FUNCTION_NAME="gcf-daily_update_redmine"
+FUNCTION_NAME="gcf-daily-update-redmine"
 
 # Deploy the Google Cloud Function
 gcloud beta functions deploy ${FUNCTION_NAME} \

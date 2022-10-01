@@ -6,15 +6,16 @@ FUNCTION_NAME="gcf-daily-update-redmine"
 
 # Deploy the Google Cloud Function
 gcloud beta functions deploy ${FUNCTION_NAME} \
-    --gen2 \
-    --runtime python310 \
+    --runtime python37 \
     --region ${REGION} \
     --trigger-http \
     --allow-unauthenticated \
     --memory 2GB \
     --entry-point daily_update_redmine \
     --timeout=300s
+    --source .
 
+# --gen2
 # --trigger-http            # httpトリガー
 # --trigger-topic=<TOPIC_NAME>  # Pub/Subが実行されるトピックの名前
 # --trigger-event=google.storage... # GCSでトリガーされる４つのトリガーのいずれかを指定
@@ -30,3 +31,4 @@ gcloud beta functions deploy ${FUNCTION_NAME} \
 # --timeout                 # デフォルトは60秒。60秒以上かかる処理を実行したい場合に設定する。第2世代では、HTTP関数で最大60分、イベント関数で最大10分までの処理を実行できる
 #                           # 第一世代は最大9分
 # --memory                  # デフォルトは256MB。スクレイピングなどの重い処理を行う場合に設定する。第2世代では、128MB, 256MB, 512MB, 1024MB, 2048MB, 4096MB, 8192MB, 16384MB
+# --source .                # ソースコードの場所を指定すると、関数を更新できる

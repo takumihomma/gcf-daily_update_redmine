@@ -12,7 +12,7 @@ gcloud beta functions deploy ${FUNCTION_NAME} \
     --trigger-http \
     --allow-unauthenticated \
     --memory 2GB \
-    --entry-point main \
+    --entry-point daily_update_redmine \
     --timeout=300s
 
 # --trigger-http            # httpトリガー

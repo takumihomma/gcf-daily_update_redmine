@@ -27,6 +27,13 @@ class Chrome:
 #    chrome_options.add_argument('--proxy-server="direct://"')
     chrome_options.add_argument('--start-maximized')
     chrome_options.add_argument('--kiosk-printing') #印刷ダイアログが開くと、印刷ボタンを無条件に押す。
+    chrome_options.add_argument('--hide-scrollbars')
+    chrome_options.add_argument('--enable-logging')
+    chrome_options.add_argument('--log-level=0')
+    chrome_options.add_argument('--single-process')
+    chrome_options.add_argument('--ignore-certificate-errors')
+    chrome_options.binary_location = os.getcwd() + "/headless-chromium"
+    
     DL = os.getcwd() + '/data'
     chrome_options.add_experimental_option("prefs", {
         "download.default_directory": DL \

@@ -159,7 +159,7 @@ def issues2df(redmine):
  project_name は identifier のほか project_id(num) でもよさげ。
 """
 #%%
-def daily_update_redmine():
+def daily_update_redmine(request):
     setting = read_yml('setting.yml')
     URL = setting['URL']
     API_KEY = setting['API_KEY']

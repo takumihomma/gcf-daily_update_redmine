@@ -7,7 +7,7 @@ FUNCTION_NAME="gcf-daily_update_redmine"
 # Deploy the Google Cloud Function
 gcloud beta functions deploy ${FUNCTION_NAME} \
     --gen2 \
-    --runtime python37 \
+    --runtime python310 \
     --region ${REGION} \
     --trigger-http \
     --allow-unauthenticated \

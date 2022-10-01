@@ -1,0 +1,12 @@
+# pip でインストールする類のパッケージライブラリ（ビルドには最低１つ必要）
+
+# update_redmine.py
+pandas==1.4.1
+python-redmine==2.3.0
+PyYAML==5.3.1
+
+# for Chrome Scraping
+webdriver-manager==3.5.2
+chromedriver-binary==99.0.4844.17.0
+chromedriver-binary-auto==0.1.1
+selenium==4.1.0

@@ -1,0 +1,14 @@
+redmine:
+  url: "http://34.97.164.103"
+  API_key: "aa91f428b2ddd94d03f83c4446477cd5e7012fff"
+  username: "user"
+  password: "0522184010"
+  recurring:               # 繰り返し区分
+    every1m: "1"
+    every3m: "5"
+    every6m: "6"
+    every12m: "2"
+    spot: "3"              # SPOT
+    copied: "7"            # 複写済
+    data: "4"              # データ保管庫
+

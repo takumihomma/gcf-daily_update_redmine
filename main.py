@@ -188,7 +188,6 @@ def duplicate_issue(driver, page,start_dateY, start_dateM, start_dateD, due_date
     driver.get(page)
     WebDriverWait(driver, 15).until(EC.presence_of_all_elements_located)
     target = driver.find_element(by=By.ID, value='issue_start_date')
-    target.click()
     target.send_keys(start_dateY)
     target.send_keys(Keys.TAB)
     target.send_keys(start_dateM)

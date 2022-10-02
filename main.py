@@ -308,13 +308,12 @@ def main(request):
                 custom_fields=[{'id': 2, 'value': '7'}],
                 )
             count += 1
-            info = info + startY + startM + startD +"-"+ dueY + dueM + dueD + ":" + target_series['subject'] + "\n"
+            info = info + "\n" + startY + startM + startD +"-"+ dueY + dueM + dueD + ":" + target_series['subject']
         else:
             pass
 
-    print('複写処理数: ', count)
     driver.quit()
-    return '複写処理数：' + str(count) + "\n\n" + info
+    return '複写処理数：' + str(count) + "\n" + info
 
 
 

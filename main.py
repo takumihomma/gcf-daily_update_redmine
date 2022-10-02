@@ -174,8 +174,10 @@ def issues2df(redmine):
 def login_redmine(driver, url, username, password):
     driver.get(url)
     WebDriverWait(driver, 15).until(EC.presence_of_all_elements_located)
-    driver.find_element(by=By.ID, value='username').send_keys(username)
-    driver.find_element(by=By.ID, value='password').send_keys(password)
+    user = driver.find_element(by=By.ID, value='username')
+    user.send_keys(username)
+    pswd = driver.find_element(by=By.ID, value='password')
+    pswd.send_keys(password)
     driver.find_element(by=By.ID, value='login-submit').click()
     WebDriverWait(driver, 15).until(EC.presence_of_all_elements_located)
 

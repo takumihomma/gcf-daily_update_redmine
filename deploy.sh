@@ -12,7 +12,7 @@ gcloud beta functions deploy ${FUNCTION_NAME} \
     --allow-unauthenticated \
     --memory 2GB \
     --entry-point main \
-    --timeout=300s
+    --timeout=300s \
     --source .
 
 # --gen2

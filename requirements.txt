@@ -10,4 +10,5 @@ PyYAML==5.3.1
 webdriver-manager==3.5.2
 chromedriver-binary==99.0.4844.17.0
 chromedriver-binary-auto==0.1.1
-selenium==4.1.0
+selenium==4.1.0  # headless-chromiumでは、このバージョンは動かないらしい
+# selenium==3.141.0

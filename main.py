@@ -215,6 +215,7 @@ def main(request):
     chrome_options.add_argument('--v=99')
     chrome_options.add_argument('--single-process')
     chrome_options.add_argument('--ignore-certificate-errors')
+    chrome_options.add_experimental_option("w3c", False)   # bug対策 headless-chromium のバージョンが合わない場合にこれを加えるといいらしい
     chrome_options.binary_location = os.getcwd() + "/headless-chromium"
 
 #    chrome_service = fs.Service(executable_path=ChromeDriverManager().install())

@@ -14,8 +14,10 @@ from redminelib import Redmine
 from pandas.tseries.offsets import DateOffset
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
+from selenium.webdriver.chrome import service as fs
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
+from webdriver_manager.chrome import ChromeDriverManager
 import time
 
 #%% ----- 設定ymlの読込 -----
@@ -213,9 +215,14 @@ def main(request):
     chrome_options.add_argument('--v=99')
     chrome_options.add_argument('--single-process')
     chrome_options.add_argument('--ignore-certificate-errors')
-    chrome_options.binary_location = os.getcwd() + "/headless-chromium"
+#    chrome_options.binary_location = os.getcwd() + "/headless-chromium"
 
-    driver = webdriver.Chrome(os.getcwd() + "/chromedriver", chrome_options=chrome_options)
+    chrome_service = fs.Service(executable_path=ChromeDriverManager().install())
+    driver = webdriver.Chrome(
+        service = chrome_service,
+        options=chrome_options
+        )
+#    driver = webdriver.Chrome(os.getcwd() + "/chromedriver", chrome_options=chrome_options)
 
     setting = read_yml('setting.yml')
     URL = setting['URL']
@@ -305,4 +312,4 @@ def main(request):
 
 
 if __name__ == '__main__':
-    main()
+    main('some')

@@ -299,7 +299,7 @@ def main(request):
                 custom_fields=[{'id': 2, 'value': '7'}],
                 )
             count += 1
-            info = info + startY + startM + startD +"-"+ dueY + dueM + dueD + ":" + df_issues[['subject']] + "\n"
+            info = info + startY + startM + startD +"-"+ dueY + dueM + dueD + ":" + target_series['subject'] + "\n"
         else:
             pass
 

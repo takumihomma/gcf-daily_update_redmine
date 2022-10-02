@@ -215,14 +215,11 @@ def main(request):
     chrome_options.add_argument('--v=99')
     chrome_options.add_argument('--single-process')
     chrome_options.add_argument('--ignore-certificate-errors')
-#    chrome_options.binary_location = os.getcwd() + "/headless-chromium"
+    chrome_options.binary_location = os.getcwd() + "/headless-chromium"
 
-    chrome_service = fs.Service(executable_path=ChromeDriverManager().install())
-    driver = webdriver.Chrome(
-        service = chrome_service,
-        options=chrome_options
-        )
-#    driver = webdriver.Chrome(os.getcwd() + "/chromedriver", chrome_options=chrome_options)
+#    chrome_service = fs.Service(executable_path=ChromeDriverManager().install())
+#    driver = webdriver.Chrome(service = chrome_service, options=chrome_options)
+    driver = webdriver.Chrome(os.getcwd() + "/chromedriver", chrome_options=chrome_options)
 
     setting = read_yml('setting.yml')
     URL = setting['URL']

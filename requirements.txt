@@ -1,7 +1,7 @@
 # pip でインストールする類のパッケージライブラリ（ビルドには最低１つ必要）
 
 # update_redmine.py
-#pandas==1.4.1
+#pandas==1.4.1   -> python3.7ではこのバージョンはデプロイエラーになる
 pandas
 python-redmine==2.3.0
 PyYAML==5.3.1

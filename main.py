@@ -255,6 +255,7 @@ def main(request):
 
     # -----データのアップデート -----
     count = 0
+    info = ""
     for row in range(len(df_issues)):
         target_series = df_issues.iloc[row]
         if target_series['cf0_value'] == every1m:   #cf0_value=1 毎月
@@ -298,11 +299,13 @@ def main(request):
                 custom_fields=[{'id': 2, 'value': '7'}],
                 )
             count += 1
+            info = info + startY + startM + startD +"-"+ dueY + dueM + dueD + ":" + df_issues[['subject']] + "\n"
         else:
             pass
+
     print('複写処理数: ', count)
     driver.quit()
-    return '複写処理数：' + str(count)
+    return '複写処理数：' + str(count) + "\n" + info
 
 
 

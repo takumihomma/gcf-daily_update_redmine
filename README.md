@@ -8,6 +8,7 @@ main.py ->
 
 
 # deploy in Google Cloud SHELL GPCにログインし、クラウドSHELLにて以下の操作をする！
-git clone https://github.com/takumihomma/gcf-daily_update_redmine　（Gitに同期したあと、そのファイルをGCPにアップロード）
+git clone https://github.com/takumihomma/gcf-daily_update_redmine　（最初だけ。Gitに同期したあと、そのファイルをGCPにアップロード）
 cd gcf-daily_update_redmine
+git pull
 sh deploy.sh

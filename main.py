@@ -118,16 +118,15 @@ def issues2df(redmine):
     3 ...
     """
     # 前回の作成で年が「2022」にならず「0002」になってしまうバグがある。年が1000未満の場合にはチケットが作成できないため、2020を加算する
-    if issues2df['due_date'][:3] == '000':
-        issues2df['due_date'] = issues2df['due_date'].replace("000","202")
-    if issues2df['start_date'][:3] == '000':
-        issues2df['start_date'] = issues2df['start_date'].replace("000","202")
+#    if issues2df['due_date'][:3] == '000':
+#        issues2df['due_date'] = issues2df['due_date'].replace("000","202")
+#    if issues2df['start_date'][:3] == '000':
+#        issues2df['start_date'] = issues2df['start_date'].replace("000","202")
 
 
-
-    issues2df['due_date'] = pd.to_datetime(issues2df['due_date'], format='%Y-%m-%d') #日付型に変更
-    issues2df['start_date'] = pd.to_datetime(issues2df['start_date'], format='%Y-%m-%d')
-    issues2df['closed_on'] = pd.to_datetime(issues2df['closed_on'], format='%Y-%m-%d').dt.date
+    issues2df['due_date'] = pd.to_datetime(issues2df['due_date'], format='%Y-%m-%d', errors='coerce') #日付型に変更
+    issues2df['start_date'] = pd.to_datetime(issues2df['start_date'], format='%Y-%m-%d', errors='coerce')
+    issues2df['closed_on'] = pd.to_datetime(issues2df['closed_on'], format='%Y-%m-%d', errors='coerce').dt.date
 
     projects2df = resourceset2df(issues2df['project'])
     projects2df = projects2df.rename(columns={'id': 'project_id', 'name': 'project_name'})

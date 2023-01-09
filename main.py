@@ -199,6 +199,7 @@ def duplicate_issue(driver, page,start_dateY:str, start_dateM:str, start_dateD:s
     duedate = "00" + due_dateY + due_dateM + due_dateD
 
     target = driver.find_element(by=By.ID, value='issue_parent_issue_id')
+    target.click()
     target.send_keys(Keys.TAB)
     time.sleep(1)
     #target = driver.find_element(by=By.ID, value='issue_start_date')

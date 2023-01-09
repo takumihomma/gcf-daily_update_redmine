@@ -196,18 +196,22 @@ def duplicate_issue(driver, page,start_dateY, start_dateM, start_dateD, due_date
     driver.get(page)
     WebDriverWait(driver, 15).until(EC.presence_of_all_elements_located)
     target = driver.find_element(by=By.ID, value='issue_start_date')
-    target.send_keys("00")
-    target.send_keys(start_dateY)
+    inputdate = "00" + start_dateY + start_dateM + start_dateD
+    target.send_keys(inputdate)
+    #target.send_keys("00")
+    #target.send_keys(start_dateY)
     #target.send_keys(Keys.TAB) # 6桁で入力するときはTABキーは不要
-    target.send_keys(start_dateM)
-    target.send_keys(start_dateD)
+    #target.send_keys(start_dateM)
+    #target.send_keys(start_dateD)
     target = driver.find_element(by=By.ID, value='issue_due_date')
-    target.send_keys("00")
-    target.send_keys(due_dateY)
+    inputdate = "00" + due_dateY + due_dateM + due_dateD
+    target.send_keys(inputdate)
+    #target.send_keys("00")
+    #target.send_keys(due_dateY)
     #target.send_keys(Keys.TAB) # 6桁で入力するときはTABキーは不要
-    target.send_keys(due_dateM)
-    target.send_keys(due_dateD)
-    time.sleep(1)
+    #target.send_keys(due_dateM)
+    #target.send_keys(due_dateD)
+    #time.sleep(1)
     driver.find_element(by=By.NAME, value='commit').click()
     WebDriverWait(driver, 15).until(EC.presence_of_all_elements_located)
 

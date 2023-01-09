@@ -191,17 +191,14 @@ def login_redmine(driver, url, username, password):
 
 #%% -------Duplicate Issue--------
 def duplicate_issue(driver, page,start_dateY, start_dateM, start_dateD, due_dateY, due_dateM, due_dateD):
-    # 前回の作成で年が「2022」にならず「0002」になってしまうバグがある。年が1000未満の場合にはチケットが作成できないため、2020を加算する
-    #if start_dateY < 2020:
-    #    start_dateY = start_dateY + 2020
-    #if due_dateY < 2020:
-    #    due_dateY = due_dateY + 2020
+    # <input type="date">タグは年号を6桁で設定する必要がある。
 
     driver.get(page)
     WebDriverWait(driver, 15).until(EC.presence_of_all_elements_located)
     target = driver.find_element(by=By.ID, value='issue_start_date')
+    target.send_keys("00")
     target.send_keys(start_dateY)
-    target.send_keys(Keys.TAB)
+    #target.send_keys(Keys.TAB) # 6桁で入力するときはTABキーは不要
     target.send_keys(start_dateM)
     target.send_keys(start_dateD)
     target = driver.find_element(by=By.ID, value='issue_due_date')

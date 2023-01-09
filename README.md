@@ -21,7 +21,7 @@ main.py ->
     ```
     cd gcf-daily_update_redmine
     git pull
-    sh deploy.sh  -> デプロイに時間がかかる
+    sh deploy.sh  -> cloud SHELLの承認ボタンを押す。デプロイに時間がかかる
     ```
     1. デプロイが終わったら正常稼働を確認する
 

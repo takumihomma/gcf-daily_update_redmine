@@ -1,4 +1,4 @@
-# gcf-daily_update_redmine
+## gcf-daily_update_redmine
 GCF-daily_update_redmine
 
 main.py -> 
@@ -7,8 +7,16 @@ main.py ->
             chrome_scraping.py
 
 
-# deploy in Google Cloud SHELL GPCにログインし、クラウドSHELLにて以下の操作をする！
-git clone https://github.com/takumihomma/gcf-daily_update_redmine　（最初だけ。Gitに同期したあと、そのファイルをGCPにアップロード）
+# アップデートの方法
+1. Githubにアップロード
+    * vscodeで
+1. deploy in Google Cloud SHELL GPCにログインし、クラウドSHELLにて以下の操作をする！
+```
+git clone https://github.com/takumihomma/
+gcf-daily_update_redmine　（最初だけ。Gitに同期したあと、そのファイルをGCPにアップロード）
 cd gcf-daily_update_redmine
 git pull
 sh deploy.sh
+```
+
+

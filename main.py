@@ -197,7 +197,7 @@ def duplicate_issue(driver, page,start_dateY:str, start_dateM:str, start_dateD:s
     WebDriverWait(driver, 15).until(EC.presence_of_all_elements_located)
     target = driver.find_element(by=By.ID, value='issue_start_date')
     startdate = "00" + start_dateY + start_dateM + start_dateD
-    target.send_keys(starddate)
+    target.send_keys(startdate)
     #target.send_keys("00")
     #target.send_keys(start_dateY)
     #target.send_keys(Keys.TAB) # 6桁で入力するときはTABキーは不要

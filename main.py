@@ -332,8 +332,8 @@ def main(request):
                 custom_fields=[{'id': 2, 'value': '7'}],
                 )
             count += 1
-            info = info + "\n" + startY + startM + startD +"-"+ dueY + dueM + dueD + ":" + target_series['subject']
-            info = info + testinfo
+            info = info + "\n" + startY + startM + startD +"-"+ dueY + dueM + dueD + ":" + target_series['subject'] + "\n"
+            info = info + "\n" + testinfo
         else:
             pass
 

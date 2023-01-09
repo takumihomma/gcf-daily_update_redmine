@@ -190,30 +190,31 @@ def login_redmine(driver, url, username, password):
     WebDriverWait(driver, 15).until(EC.presence_of_all_elements_located)
 
 #%% -------Duplicate Issue--------
-def duplicate_issue(driver, page,start_dateY, start_dateM, start_dateD, due_dateY, due_dateM, due_dateD):
+def duplicate_issue(driver, page,start_dateY:str, start_dateM:str, start_dateD:str, due_dateY:str, due_dateM:str, due_dateD:str) -> str:
     # <input type="date">タグは年号を6桁で設定する必要がある。
 
     driver.get(page)
     WebDriverWait(driver, 15).until(EC.presence_of_all_elements_located)
     target = driver.find_element(by=By.ID, value='issue_start_date')
-    inputdate = "00" + start_dateY + start_dateM + start_dateD
-    target.send_keys(inputdate)
+    startdate = "00" + start_dateY + start_dateM + start_dateD
+    target.send_keys(starddate)
     #target.send_keys("00")
     #target.send_keys(start_dateY)
     #target.send_keys(Keys.TAB) # 6桁で入力するときはTABキーは不要
     #target.send_keys(start_dateM)
     #target.send_keys(start_dateD)
     target = driver.find_element(by=By.ID, value='issue_due_date')
-    inputdate = "00" + due_dateY + due_dateM + due_dateD
-    target.send_keys(inputdate)
+    duedate = "00" + due_dateY + due_dateM + due_dateD
+    target.send_keys(duedate)
     #target.send_keys("00")
     #target.send_keys(due_dateY)
     #target.send_keys(Keys.TAB) # 6桁で入力するときはTABキーは不要
     #target.send_keys(due_dateM)
     #target.send_keys(due_dateD)
-    #time.sleep(1)
+    time.sleep(1)
     driver.find_element(by=By.NAME, value='commit').click()
     WebDriverWait(driver, 15).until(EC.presence_of_all_elements_located)
+    return "start:" + startdate + ", due:" + duedate
 
 #%% -----日付型を文字列に変更------
 def date2str(date: datetime):
@@ -313,7 +314,7 @@ def main(request):
                 dueD = ""
 
             page = URL + '/projects/' + PROJECT + '/issues/' + ISSUE + '/copy'
-            duplicate_issue(driver, page, startY, startM, startD, dueY, dueM, dueD)
+            testinfo = duplicate_issue(driver, page, startY, startM, startD, dueY, dueM, dueD)
 
             # ----- 複写元チケットの「繰り返し区分」を「複写済」にする -----
             redmine.issue.update(
@@ -322,6 +323,7 @@ def main(request):
                 )
             count += 1
             info = info + "\n" + startY + startM + startD +"-"+ dueY + dueM + dueD + ":" + target_series['subject']
+            info = info + testinfo
         else:
             pass
 

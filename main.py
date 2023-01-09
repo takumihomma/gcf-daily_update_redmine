@@ -195,8 +195,9 @@ def duplicate_issue(driver, page,start_dateY:str, start_dateM:str, start_dateD:s
 
     driver.get(page)
     WebDriverWait(driver, 15).until(EC.presence_of_all_elements_located)
-    startdate = start_dateD + start_dateM + "00" + start_dateY
-    duedate = due_dateD + due_dateM + "00" + due_dateY
+    # Redmineはなぜか内部の日付を月/日/年（全10桁）で管理している？ <input type="date">のときは年号は6桁なので要注意！
+    startdate = start_dateM + start_dateD + "00" + start_dateY
+    duedate = due_dateM + due_dateD + "00" + due_dateY
 
     #target = driver.find_element(by=By.ID, value='issue_parent_issue_id')
     #target.click()
